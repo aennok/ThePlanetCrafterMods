@@ -84,7 +84,11 @@ public class PlayerAvatar3D {
         for (int i = 0; i < armor.transform.childCount; i++) {
             child = armor.transform.GetChild(i);
             child.gameObject.SetActive(true);
-            child.GetComponent<SkinnedMeshRenderer>().enabled = true;
+            var sr = child.GetComponent<SkinnedMeshRenderer>();
+            if (sr != null)
+            {
+                sr.enabled = true;
+            }
         }
         //Vector3 scale = playerRoot.transform.localScale;
         playerRoot.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
