@@ -1,6 +1,7 @@
 ﻿using SpaceCraft;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using UnityEngine;
@@ -101,8 +102,10 @@ namespace FeatMultiplayer
             */
             Assembly me = Assembly.GetExecutingAssembly();
             string dir = Path.GetDirectoryName(me.Location);
+            var sw = new Stopwatch();
+            sw.Start();
             result.avatar = PlayerAvatar3D.CreatePlayer("Avatar", color, dir);
-
+            Plugin.LogWarning("Avatar load: " + (sw.ElapsedTicks / 10000f));
             float scaling = 2.5f;
 
             // ----------
